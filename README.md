@@ -7,13 +7,15 @@ For the ease of use when running the project everything is handled by terraform.
 
 # Prerequisites
 
-**create terraform.tfvars with the following variables:**  
+### **create terraform.tfvars with the following variables:** <br><br>
 
 > do_token="*digital ocean token*"  
 > pg_user="*postgres user*"  
 > pg_pwd="*postgres password*"  
 
-Before creating the k8s cluster a digital ocean project and vpc are created for grouping everything together.
+<br>
+
+### **Before creating the k8s cluster a digital ocean project and vpc are created for grouping everything together.**
 
 ```
 resource "digitalocean_project" "do-challenge-proj" {
@@ -33,8 +35,9 @@ resource "digitalocean_vpc" "do-challenge-vpc" {
   ip_range = "10.0.0.0/24"
 }
 ```
+<br>
 
-The digitalocean managed control plane cluster is created and also the autoscaled worker pool node with a min of 1 node and a max of 3.
+### **The digitalocean managed control plane cluster is created and also the autoscaled worker pool node with a min of 1 node and a max of 3.**
 
 ```
 resource "digitalocean_kubernetes_cluster" "doks" {
@@ -52,8 +55,9 @@ resource "digitalocean_kubernetes_cluster" "doks" {
   }
 }
 ```
+<br>
 
-Kubegres operator is installed in the cluster using the kubegres.yaml manifests.
+### **Kubegres operator is installed in the cluster using the kubegres.yaml manifests.**
 
 ```
 data "kubectl_file_documents" "kubegres_operator_files" {
@@ -65,8 +69,9 @@ resource "kubectl_manifest" "kubegres-operator" {
   yaml_body = each.value
 }
 ```
+<br>
 
-K8s scret is created with pg_user and pg_pwd vars.
+### **K8s secret is created with pg_user and pg_pwd vars.**
 
 ```
 resource "kubernetes_secret" "pg-secret" {
@@ -82,8 +87,9 @@ resource "kubernetes_secret" "pg-secret" {
   depends_on = [digitalocean_kubernetes_cluster.doks]
 }
 ```
+<br>
 
-Postgres cluster is created with pg-cluster manifests
+### **Postgres cluster is created with pg-cluster manifests.**
 
 ```
 resource "kubectl_manifest" "postgres-cluster" {
