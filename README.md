@@ -5,6 +5,12 @@ It creates a Primary PostgreSql pod and two PostgreSql Replica pods and replicat
 Everything was done using the kubegres operator that really simplifies the process. <br>
 For the ease of use when running the project everything is handled by terraform.
 
+# Demo
+
+[challenge demo video](https://youtu.be/koBWFi_xLzA)
+
+<br>
+
 # Prerequisites
 
 ### **create terraform.tfvars with the following variables:** <br><br>
@@ -12,6 +18,10 @@ For the ease of use when running the project everything is handled by terraform.
 > do_token="*digital ocean token*"  
 > pg_user="*postgres user*"  
 > pg_pwd="*postgres password*"  
+
+<br>
+
+# Description
 
 <br>
 
