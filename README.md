@@ -9,8 +9,6 @@ For the ease of use when running the project everything is handled by terraform.
 
 [challenge demo video](https://youtu.be/koBWFi_xLzA)
 
-<br>
-
 # Prerequisites
 
 ### **create terraform.tfvars with the following variables:** <br><br>
